@@ -6,11 +6,14 @@ const Home = () => {
         {title: "Welcome to My Party", body:'lorem ipsum...', Author: "Mohamed",id: 2},
         {title: "Welcome to MY ZOO", body:'lorem ipsum...', Author: "Abraham",id: 3}
     ]);
-
+    // Filter using the id.
+    const handleDelete = (id) => { 
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs)
+    }
     return (
         <div className="Home">
-            <BlogList blogs={blogs} title="All Blogs" />
-            
+            <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
         </div>
     );
 }
