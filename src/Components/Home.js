@@ -1,18 +1,21 @@
 import { useState } from 'react';
 const Home = () => {
-    // useState Hook is used to change dynamic values
-    const [name, setName] = useState("Islam");
-    const [Age, setAge] = useState(21);
+    const [blogs, setBlogs] = useState([
+        {title: "My New React Website", body:'lorem ipsum...', Author: "Islam",id: 1},
+        {title: "Welcome to My Party", body:'lorem ipsum...', Author: "Mohamed",id: 2},
+        {title: "Welcome to MY ZOO", body:'lorem ipsum...', Author: "Abraham",id: 3}
+    ]);
 
-    const  handleClick = () => {
-        setName('Mohamed');
-        setAge(25);
-    }
-    return (  
+    return (
+        // Key is used as an attribute to keep track of each item inside each obj
         <div className="Home">
-            <h2>HomePage</h2>
-            <p>{name} is {Age} years old.</p>
-            <button onClick={handleClick}>Click here!</button>
+            
+            {blogs.map((blog) => 
+                <div className="blog-preview" key={blog.id}>
+                    <h2>{blog.title}</h2>
+                    <p>Written by: { blog.Author}</p>
+                </div>
+            )}
         </div>
     );
 }
